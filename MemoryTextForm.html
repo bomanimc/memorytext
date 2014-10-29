@@ -11,12 +11,13 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-        <script src="protractor.js"></script>
-
         <!-- Bootstrap -->
         <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="MemoryTextStyle.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+        <script src="protractor.js"></script>
+        <script src="app/bower_components/angular/angular.min.js"></script>
     </head>
 
     <body class="gradBG" ng-app="myapp">
@@ -51,22 +52,25 @@
           <div class = "col-md-6 col-md-offset-3">
             <label for="post_expiration">Expiration</label><br>
                 <script>
-                   angular.module('dateInputExample', [])
-                     .controller('DateController', ['$scope', function($scope) {
-                       $scope.value = new Date(2014, 9, 22);
-                     }]);
-                </script>
-                <form name="myForm" ng-controller="DateController as dateCtrl">
-                   Pick a date in 2014:
-                   <input type="date" id="exampleInput" name="input" ng-model="value" placeholder="yyyy-MM-dd" min="2014-01-01" max="2014-12-31" required />
-                   <span class="error" ng-show="myForm.input.$error.required">Required!</span>
-                   <span class="error" ng-show="myForm.input.$error.date">Not a valid date!</span>
-                    <tt>value = {{value | date: "yyyy-MM-dd"}}</tt><br/>
-                    <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
-                    <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
-                    <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-                    <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/-->
-                </form>
+                     angular.module('dateInputExample', [])
+                       .controller('DateController', ['$scope', function($scope) {
+                         $scope.value = new Date(2014, 10, 31);
+                       }]);
+                  </script>
+                  <form name="myForm" ng-controller="DateController as dateCtrl">
+                     Pick a date in 2013:
+                     <input type="date" id="exampleInput" name="input" ng-model="value"
+                         placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
+                     <span class="error" ng-show="myForm.input.$error.required">
+                         Required!</span>
+                     <span class="error" ng-show="myForm.input.$error.date">
+                         Not a valid date!</span>
+                      <tt>value = {{value | date: "yyyy-MM-dd"}}</tt><br/>
+                      <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+                      <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+                      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+                      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+                  </form>
             <!--select id="post_expiration_1i" name="post[expiration(1i)]">
                 <option selected="selected" value="2014">2014</option>
                 <option value="2015">2015</option>
