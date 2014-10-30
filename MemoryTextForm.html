@@ -14,15 +14,17 @@
         <!-- Bootstrap -->
         <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="MemoryTextStyle.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ruluko">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-        <script src="protractor.js"></script>
+        <!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+        <script src="protractor.js"></script-->
         <script src="app/bower_components/angular/angular.min.js"></script>
     </head>
 
     <body class="gradBG" ng-app="myapp">
 
-        <div ng-controller="MyController" >
+
+        <!--div ng-controller="MyController" >
             <form>
                 <input type="text" name="firstName" ng-model="myForm.firstName"> First name <br/>
                 <input type="text" name="lastName"  ng-model="myForm.lastName"> Last name <br/>
@@ -31,9 +33,18 @@
             <div>
                 {{myForm.firstName}} {{myForm.lastName}}
             </div>
-        </div>
+        </div-->
 
-        <div class = "container">        
+        <div class = "container">
+          <br>
+        <div class = "row">
+          <div class = "col-lg-3 col-centered">
+            <div>
+              <p class="headStyle">Create Your Text</p>
+            </div>   
+          </div>
+        </div>
+         <br>     
         <div class = "row">
           <div class = "col-md-6 col-md-offset-3">
             <label for="post_title">Title</label><br>
@@ -57,7 +68,7 @@
                          $scope.value = new Date(2014, 10, 31);
                        }]);
                   </script>
-                  <form name="myForm" ng-controller="DateController as dateCtrl">
+                  <form name="myForm" ng-controller="DateController">
                      Pick a date in 2013:
                      <input type="date" id="exampleInput" name="input" ng-model="value"
                          placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />

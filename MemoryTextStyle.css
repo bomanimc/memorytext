@@ -10,6 +10,27 @@
     margin-left: -268px;
 }
 
+.headStyle {
+  /*
+  margin-right: auto;
+  margin-left: auto;
+  */
+  font-size: 250%;
+  font-family: 'Ruluko', serif;
+  /*
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -268px;
+  */
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .centerLogin {
   margin-right: auto;
   margin-left: auto;
