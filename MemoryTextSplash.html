@@ -17,8 +17,20 @@
             $(function() {
                 $("#loginButton").click(function() {
                     console.log("Login Button Clicked");
-                    ref.authWithOAuthPopup("facebook", function(error, authData) {}, {
-                      remember: "sessionOnly"
+                
+                    ref.authWithOAuthPopup("facebook", function(error, authData) {
+                       if (error) {
+                            if (error.code === "TRANSPORT_UNAVAILABLE") {
+                              // fall-back to browser redirects, and pick up the session
+                              // automatically when we come back to the origin page
+                              console.log("Auth Did Not Work. " + error);
+                              ref.authWithOAuthRedirect("facebook", function(error, authData) {});
+                            }
+                        } 
+                        else if (authData) {
+                            // user authenticated with Firebase
+                            console.log("Auth Worked");
+                        }
                     });
                 });
             });
