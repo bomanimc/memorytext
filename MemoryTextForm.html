@@ -116,6 +116,7 @@
 
                     //var phoneNumber = document.getElementById("phoneNumber");
                     //var textMessage = document.getElementById("bodyText");
+                    /*
                     var phoneNumber = 6155691920;
                     var textMessage = "Harcoded test message";
                     var data = {
@@ -131,6 +132,21 @@
                         dataType: 'jsonp',
                         data: 'jsonData', // or $('#myform').serializeArray()
                         success: function() { alert('POST completed'); }
+                    });
+                    */
+
+                    // Download the Node helper library from twilio.com/docs/node/install
+                    // These vars are your accountSid and authToken from twilio.com/user/account
+                    var accountSid = 'ACf1417db97ad6a449d3935f4ee970d1d4';
+                    var authToken = '353071a7cf8319b57b239417929acd0e'; 
+                    var client = require('twilio')(accountSid, authToken);
+                     
+                    client.messages.create({
+                        body: "Test Message from Bomani",
+                        to: "+16155691920",
+                        from: "+16159002993",
+                    }, function(err, message) {
+                        process.stdout.write(message.sid);
                     });
 
                 });
