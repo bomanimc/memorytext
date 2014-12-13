@@ -1,0 +1,67 @@
+<!--Bootstrap-->
+<link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--Custom CSS-->
+<link rel="stylesheet" type="text/css" href="css/MemoryTextStyle.css">
+
+<!--Bootstrap Form Helpers-->
+<script src="js/BootstrapFormHelpers-master/dist/js/bootstrap-formhelpers.min.js"></script>
+
+<div class = "container">
+          <br>
+        <div class = "row">
+          <div class = "col-lg-3 col-centered">
+            <div>
+              <p class="headStyle">Create Your Text</p>
+            </div>   
+          </div>
+        </div>
+         <br>     
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <label for="post_title">Title</label><br>
+            <input class="form-control" id="post_title" placeholder="Give your message a title!" name="post[title]" type="text" />
+          </div>
+        </div>
+        <br>
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <label for="post_description">Body</label><br>
+            <textarea class="form-control" rows="3" id="bodyText" placeholder="Enter the message's body here." required></textarea>
+          </div>
+        </div>
+        <br>
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <label for="post_expiration">Send Date</label><br>
+              <form>
+                <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
+                <div class="bfh-datepicker"></div>
+              </form>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <label for="post_expiration">Send Time</label><br>
+              <form>
+                <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
+                <div class="bfh-timepicker" data-time="now" data-mode="12h"></div>              
+              </form>
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <form>
+              <label for="phone_number">Phone</label><br>
+                  <input type="text" class="form-control bfh-phone" id="phoneNumber" value="5555555555" data-format="+1 (ddd) ddd-dddd">
+            </form>
+          </div>
+        </div>
+        <br>
+        <div class = "row">
+          <div class = "col-md-6 col-md-offset-3">
+            <input class="btn btn-primary" id="submitButton" name="commit" type="submit" value="Submit" />
+          </div>
+        </div>
+      </div>
+    </div>

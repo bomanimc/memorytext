@@ -1,11 +1,16 @@
-<html lang="en">
+<html lang="en" ng-app="memorytext">
     <head>
         <title>MemoryText</title> 
 
         <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
-        <link rel="stylesheet" type="text/css" href="MemoryTextStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/MemoryTextStyle.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ruluko">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
+
+        <script src="js/routes.js"></script>
+        <script src="js/app.js"></script>
     
     </head>
     <body class="gradBG">
@@ -30,11 +35,13 @@
                         else if (authData) {
                             // user authenticated with Firebase
                             console.log("Auth Worked");
+                            $("#loginButton").hide();
+                            $("getStarted").show();
+                            $("#logoutButton").show();
                         }
                     });
 
-                    $("#logoutButton").show();
-                    $("#getStarted").show();
+                    
                 });
             });
         </script>
@@ -80,13 +87,14 @@
             <a id="alink" href="#"><p class="button">Login!</p></a>
         </div>
 
-        <!--div id="logoutButton" class="cornerLogout">
+        <div id="logoutButton" class="cornerLogout">
             <a id="alink" href="#"><p class="button">Logout</p></a>
         </div>
 
         <div id="getStarted" class="centerStart">
-            <a id="alink" href="#"><p class="button">Get Started With Memory Text!</p></a>
-        </div-->
+            <a id="alink" href="#"><p class="button">Get Started!</p></a>
+              <!--a class="btn blue">Get Started!</a-->
+        </div>
 
     </body>
 </html>
