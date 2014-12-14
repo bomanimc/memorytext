@@ -1,0 +1,28 @@
+{
+  "name": "MemoryText",
+  "version": "1.0.0",
+  "description": "App to help text reminders to your phone.",
+  "main": "staticFileServer.js",
+  "dependencies": {
+    "body-parser": "^1.10.0",
+    "express": "^4.10.2",
+    "node-static": "^0.7.6",
+    "request": "^2.51.0",
+    "require": "^2.4.17",
+    "twilio": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bomanimc/memorytext.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bomanimc/memorytext/issues"
+  },
+  "homepage": "https://github.com/bomanimc/memorytext"
+}

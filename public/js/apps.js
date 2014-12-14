@@ -80,7 +80,7 @@ var formControl = function($scope) {
 				*/
 				$(function(){
 				    $.ajax({
-				        url: '/echo/json/', //the URL to your node.js server that has data
+				        url: '/MemoryText/staticFileServer.js', //the URL to your node.js server that has data
 				        dataType: 'json',
 				        cache: false
 				    }).done(function(data){
