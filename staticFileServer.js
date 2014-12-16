@@ -3,6 +3,7 @@ var request = require('request');
 var http = require('http');
 var path = require('path');
 var engines = require('consolidate');
+var schedule = require('node-schedule');
 var app = express();
 
 //Twilio-related variables
@@ -18,15 +19,15 @@ app.engine('html', engines.mustache);
 app.set('view engine', 'html');
 
 
-var sendSMS = function() {
-	console.log("Sending Message to Bomani");
+var sendSMS = function(numVal, bodyVal) {
+	console.log("Sending Message to " + numVal);
 
 	client.messages.create({
-	    body: "Test Message from Bomani",
-	    to: "+16155691920",
+	    body: bodyVal,
+	    to: numVal,
 	    from: twilioNum,
 	}, function(err, message) {
-	    process.stdout.write(message.sid);
+	    //process.stdout.write(message.sid);
 	});
 };
 
@@ -35,8 +36,11 @@ app.get('/form', function(req, res) {res.render('form.html')});
 
 app.get('/text', function (req, res){
 	console.log("API endpoint reached.");
-	console.log(req);
-	//sendSMS();
+	var numVal = req.query.to;
+	var bodyVal = req.query.bodyText;
+	//console.log(numVal);
+	//console.log(bodyVal);
+	//sendSMS(numVal, bodyVal);
 	res.send('Sent an imaginary text!');
 });
 

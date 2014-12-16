@@ -93,31 +93,25 @@
             </div>
           </div>
           <script type='text/javascript'>
-                $("#submitButton").click(function() {
-                console.log("Submit Button Clicked");
+            $("#submitButton").click(function() {
+              console.log("Submit Button Clicked");
 
-                //var phoneNumber = document.getElementById("phoneNumber");
-                //var textMessage = document.getElementById("bodyText");
+              var phoneNumber = $('#phoneNumber').val();
+              var textMessage = $('#bodyText').val();
+
+              phoneNumber = phoneNumber.replace(/[()-]/g,'');
+              phoneNumber = phoneNumber.replace(/\s+/g, '');
+
+              console.log(phoneNumber);
+              console.log(textMessage);
 
               $(function(){
-                  /*
-                  $.ajax({
-                      url: '#/text', //the URL to your node.js server that has data
-                      type: "GET",
-                      
-                      data: {
-                      "to": "+16155691920",  
-                      "body": "Hey this is an Ajax-response text from Twilio!",  
-                    }, 
-                     success: function (data, textStatus, jqXHR) { 
-                        console.log("Get Successful on AJAX-side."); 
-                        console.dir(data); 
-                        console.log(textStatus); 
-                        console.dir(jqXHR); 
-                    }
-                  });
-                  */
-                  var parameters = {"to": "+16155691920",  "body": "Hey this is an Ajax-response text from Twilio!" };
+
+                  var parameters = {
+                    "to": phoneNumber,  
+                    "bodyText": textMessage
+                  };
+
                   $.get( '/text',parameters, function(data) {
                     //$('#results').html(data);
                     console.log('Made GET call.')
