@@ -58,38 +58,37 @@ var homeControl = function($scope) {
 var formControl = function($scope) {
 
 	$("#submitButton").click(function() {
-                console.log("Submit Button Clicked");
+	    console.log("Submit Button Clicked");
 
-                //var phoneNumber = document.getElementById("phoneNumber");
-                //var textMessage = document.getElementById("bodyText");
+	    //var phoneNumber = document.getElementById("phoneNumber");
+	    //var textMessage = document.getElementById("bodyText");
 
-                // Download the Node helper library from twilio.com/docs/node/install
-                // These vars are your accountSid and authToken from twilio.com/user/account
-                /*
-                var accountSid = 'ACf1417db97ad6a449d3935f4ee970d1d4';
-                var authToken = '353071a7cf8319b57b239417929acd0e'; 
-                var client = require('twilio')(accountSid, authToken);
-                 
-                client.messages.create({
-                    body: "Test Message from Bomani",
-                    to: "+16155691920",
-                    from: "+16159002993",
-                }, function(err, message) {
-                    process.stdout.write(message.sid);
-                });
-				*/
-				$(function(){
-				    $.ajax({
-				        url: '/MemoryText/staticFileServer.js', //the URL to your node.js server that has data
-				        dataType: 'json',
-				        cache: false
-				    }).done(function(data){
-				        //"data" will be JSON. Do what you want with it. 
-				        alert(data);
-				    }); 
-				});
+		$(function(){
+		    /*
+        $.ajax({
+		        url: '#/text', //the URL to your node.js server that has data
+		        type: "GET",
+            
+		        data: {
+			      "to": "+16155691920",  
+			      "body": "Hey this is an Ajax-response text from Twilio!",  
+			    }, 
+		       success: function (data, textStatus, jqXHR) { 
+			        console.log("Get Successful on AJAX-side."); 
+			        console.dir(data); 
+			        console.log(textStatus); 
+			        console.dir(jqXHR); 
+		    	}
+		    });
+        */
+        var parameters = {"to": "+16155691920",  "body": "Hey this is an Ajax-response text from Twilio!" };
+        $.get( '#/text',parameters, function(data) {
+          //$('#results').html(data);
+          console.log('Made GET call.')
+          console.dir(data); 
+        });
+		});
 
-            });
-    
+	});
 };
 

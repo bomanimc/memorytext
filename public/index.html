@@ -1,7 +1,6 @@
-<html lang="en" ng-app="memorytext">
+<html lang="en">
     <head>
         <title>MemoryText</title> 
-
 
         <!--Adding Firebase-->
         <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
@@ -25,12 +24,33 @@
         <!--Angular setup and directives-->
         <script src="js/routes.js"></script>
         <script src="js/apps.js"></script>
+
+        <script src="js/MemoryTextJS.js"></script>
     
     </head>
     <body class="gradBG">
         <script type="text/javascript"></script>
 
-        <div ng-view></div>
+        <div class="title">
+        <p class="title">Memory Text</p>
+        </div>
+
+        <div id="motto">
+            <p>Texts until you don't forget!</p>
+        </div>
+
+        <div id="loginButton" class="centerLogin">
+            <a id="alink" href="#"><p class="button">Login!</p></a>
+        </div>
+
+        <!--div id="logoutButton" class="cornerLogout">
+            <a id="alink" href="#"><p class="button">Logout</p></a>
+        </div-->
+
+        <div id="getStarted" class="centerStart">
+            <a id="alink" href="/form"><p class="button">Get Started!</p></a>
+              <!--a class="btn blue">Get Started!</a-->
+        </div>
 
     </body>
 </html>
