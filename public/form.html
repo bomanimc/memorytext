@@ -1,0 +1,132 @@
+<html lang="en">
+    <head>
+        <title>MemoryText</title> 
+
+        <!--Adding Firebase-->
+        <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+
+        <!--Indluding jQuery-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!--Including Angular and Angular Routing-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-route.js"></script>
+
+        <!-- Bootstrap Form Helpers -->
+        <link href="js/BootstrapFormHelpers-master/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+        <!--Including home page font-->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ruluko">
+
+        <!--Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="css/MemoryTextStyle.css">
+
+        <script src="js/MemoryTextJS.js"></script>
+    
+    </head>
+    <body class="gradBG">
+       <!--Bootstrap-->
+      <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+      <!--Custom CSS-->
+      <link rel="stylesheet" type="text/css" href="css/MemoryTextStyle.css">
+
+      <!--Bootstrap Form Helpers-->
+      <script src="js/BootstrapFormHelpers-master/dist/js/bootstrap-formhelpers.min.js"></script>
+
+      <div class = "container">
+                <br>
+              <div class = "row">
+                <div class = "col-lg-3 col-centered">
+                  <div>
+                    <p class="headStyle">Create Your Text</p>
+                  </div>   
+                </div>
+              </div>
+               <br>     
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <label for="post_title">Title</label><br>
+                  <input class="form-control" id="post_title" placeholder="Give your message a title!" name="post[title]" type="text" />
+                </div>
+              </div>
+              <br>
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <label for="post_description">Body</label><br>
+                  <textarea class="form-control" rows="3" id="bodyText" placeholder="Enter the message's body here." required></textarea>
+                </div>
+              </div>
+              <br>
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <label for="post_expiration">Send Date</label><br>
+                    <form>
+                      <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
+                      <div class="bfh-datepicker"></div>
+                    </form>
+                </div>
+              </div>
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <label for="post_expiration">Send Time</label><br>
+                    <form>
+                      <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
+                      <div class="bfh-timepicker" data-time="now" data-mode="12h"></div>              
+                    </form>
+                </div>
+              </div>
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <form>
+                    <label for="phone_number">Phone</label><br>
+                        <input type="text" class="form-control bfh-phone" id="phoneNumber" value="5555555555" data-format="+1 (ddd) ddd-dddd">
+                  </form>
+                </div>
+              </div>
+              <br>
+              <div class = "row">
+                <div class = "col-md-6 col-md-offset-3">
+                  <input class="btn btn-primary" href="/text" id="submitButton" name="commit" type="submit" value="Submit" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <script type='text/javascript'>
+                $("#submitButton").click(function() {
+                console.log("Submit Button Clicked");
+
+                //var phoneNumber = document.getElementById("phoneNumber");
+                //var textMessage = document.getElementById("bodyText");
+
+              $(function(){
+                  /*
+                  $.ajax({
+                      url: '#/text', //the URL to your node.js server that has data
+                      type: "GET",
+                      
+                      data: {
+                      "to": "+16155691920",  
+                      "body": "Hey this is an Ajax-response text from Twilio!",  
+                    }, 
+                     success: function (data, textStatus, jqXHR) { 
+                        console.log("Get Successful on AJAX-side."); 
+                        console.dir(data); 
+                        console.log(textStatus); 
+                        console.dir(jqXHR); 
+                    }
+                  });
+                  */
+                  var parameters = {"to": "+16155691920",  "body": "Hey this is an Ajax-response text from Twilio!" };
+                  $.get( '/text',parameters, function(data) {
+                    //$('#results').html(data);
+                    console.log('Made GET call.')
+                    console.dir(data); 
+                  });
+              });
+
+            });
+          </script>
+
+    </body>
+</html>
