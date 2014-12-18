@@ -31,6 +31,17 @@ var sendSMS = function(numVal, bodyVal) {
 	});
 };
 
+var scheduleSMS = function(year, month, day, hour, minute, sec, numVal, bodyVal) {
+
+	var date = new Date(year, month, day, hour, minute, sec);
+
+	var smsJob = schedule.scheduleJob(date, function(){
+		sendSMS(numVal, bodyVal);
+	    console.log('Sent the scheduled text.');
+	});
+}
+
+
 app.get('/', function(req, res) {res.render('index.html')});
 app.get('/form', function(req, res) {res.render('form.html')});
 
@@ -38,10 +49,31 @@ app.get('/text', function (req, res){
 	console.log("API endpoint reached.");
 	var numVal = req.query.to;
 	var bodyVal = req.query.bodyText;
-	//console.log(numVal);
-	//console.log(bodyVal);
-	//sendSMS(numVal, bodyVal);
-	res.send('Sent an imaginary text!');
+	var monthVal = parseInt(req.query.month);
+	var dayVal = parseInt(req.query.day);
+	var yearVal = parseInt(req.query.year);
+	var hourVal = parseInt(req.query.hour);
+	var minuteVal = parseInt(req.query.minute);
+	var ampmVal = req.query.ampm;
+	var secVal = 0;
+
+	monthVal = monthVal - 1; //Zero-Indexed Months
+	if(ampmVal == "PM")
+	{
+		hourVal = hourVal + 12;
+	}
+
+	console.log(numVal);
+	console.log(bodyVal);
+	console.log(monthVal);
+	console.log(dayVal);
+	console.log(yearVal);
+	console.log(hourVal);
+	console.log(minuteVal);
+	console.log(ampmVal);
+	
+	scheduleSMS(yearVal, monthVal, dayVal, hourVal, minuteVal, secVal, numVal, bodyVal);
+	res.send('Scheduled an imaginary text!');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

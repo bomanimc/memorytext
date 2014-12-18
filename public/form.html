@@ -63,7 +63,7 @@
                   <label for="post_expiration">Send Date</label><br>
                     <form>
                       <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
-                      <div class="bfh-datepicker"></div>
+                      <div class="bfh-datepicker" id="sendDate"></div>
                     </form>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                   <label for="post_expiration">Send Time</label><br>
                     <form>
                       <!--input class="form-control" id="dpd1" name="post[title]" type="date" /-->
-                      <div class="bfh-timepicker" data-time="now" data-mode="12h"></div>              
+                      <div class="bfh-timepicker" id="sendTime" data-time="now" data-mode="12h"></div>              
                     </form>
                 </div>
               </div>
@@ -98,18 +98,34 @@
 
               var phoneNumber = $('#phoneNumber').val();
               var textMessage = $('#bodyText').val();
+              var sendDate = $('#sendDate').val();
+              var sendTime = $('#sendTime').val();
 
               phoneNumber = phoneNumber.replace(/[()-]/g,'');
               phoneNumber = phoneNumber.replace(/\s+/g, '');
 
-              console.log(phoneNumber);
-              console.log(textMessage);
+              var month = sendDate.substring(0,2);
+              var day = sendDate.substring(3,5);
+              var year = sendDate.substring(6);
+
+              var hour = sendTime.substring(0,2);
+              var minute = sendTime.substring(3,5);
+              var ampm = sendTime.substring(6);
+
+              console.log(month + " " + day + " " + year);
+              console.log(hour + " " + minute + " " + ampm);
 
               $(function(){
 
                   var parameters = {
                     "to": phoneNumber,  
-                    "bodyText": textMessage
+                    "bodyText": textMessage,
+                    "month": month,
+                    "day": day,
+                    "year": year,
+                    "hour": hour,
+                    "minute": minute,
+                    "ampm": ampm
                   };
 
                   $.get( '/text',parameters, function(data) {
